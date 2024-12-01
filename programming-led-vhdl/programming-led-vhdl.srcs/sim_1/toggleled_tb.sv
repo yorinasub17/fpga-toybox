@@ -20,13 +20,29 @@ module toggleled_tb();
     sw_0 = 0; btnC = 0; #10;
     sw_0 = 1; #10;
     sw_0 = 0; #10;
+    assert (led_0 == 0) $display("led reset check passed");
+    else
+      $error("led did not reset on reset switch");
+
     btnC = 1; #20;
     btnC = 0; #20;
+    assert (led_0 == 1) $display("led toggle on check passed");
+    else
+      $error("led did not toggle on button press");
+
     btnC = 1; #20;
     btnC = 0; #20;
+    assert (led_0 == 0) $display("led toggle off check passed");
+    else
+      $error("led did not toggle on button press");
+
     btnC = 1; #20;
     btnC = 0; #20;
+    assert (led_0 == 1) $display("led second toggle on check passed");
+    else
+      $error("led did not toggle on button press");
+
     #10;
     $finish;
-  end 
+  end
 endmodule
